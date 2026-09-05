@@ -84,6 +84,15 @@ test.describe('Game Listing and Navigation', () => {
         await expect(page.getByTestId('game-details-category')).not.toBeEmpty();
       }
     });
+
+    await test.step('Verify category and publisher descriptions are displayed', async () => {
+      await expect(page.getByTestId('game-details-category-description')).toContainText(
+        'Collection of Strategy games available for crowdfunding',
+      );
+      await expect(page.getByTestId('game-details-publisher-description')).toContainText(
+        'is a game publisher seeking funding for exciting new titles',
+      );
+    });
   });
 
   test('should display a button to back the game', async ({ page }) => {
